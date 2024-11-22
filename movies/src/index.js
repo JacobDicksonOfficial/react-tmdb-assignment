@@ -13,6 +13,7 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import UpcomingMoviesPage from './pages/upcomingMoviesPage'; 
 import MustWatchPage from "./pages/mustWatchPage";
 import NowPlayingPage from "./pages/nowPlayingPage"; // Assignment 1 (Importing now playing movies in cinema)
+import TopRatedPage from "./pages/topRatedPage";     // Assignment 1 (Importing top rated movies in cinema )
 
 // Declare the query client to manage the cache
 const queryClient = new QueryClient({
@@ -41,7 +42,8 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema */}
+            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema page */}
+            <Route path="/movies/top_rated" element={<TopRatedPage />} /> {/* Assignment 1 - Routing top rated movies in cinema page */}
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
