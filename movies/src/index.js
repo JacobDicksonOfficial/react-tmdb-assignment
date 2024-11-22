@@ -10,8 +10,9 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
-import UpcomingMoviesPage from './pages/upcomingMoviesPage'; // Import Upcoming Movies Page
+import UpcomingMoviesPage from './pages/upcomingMoviesPage'; 
 import MustWatchPage from "./pages/mustWatchPage";
+import NowPlayingPage from "./pages/nowPlayingPage"; // Assignment 1 (Importing now playing movies in cinema)
 
 // Declare the query client to manage the cache
 const queryClient = new QueryClient({
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema */}
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
