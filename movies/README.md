@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Assignment 1 - ReactJS app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: Jabez Dickson
 
-## Available Scripts
+## Overview.
 
-In the project directory, you can run:
+To provide movie details, currently playing movies, top-rated movies, and more, the app communicates with The Movie Database (TMDB) API.
+It supports several endpoints and lets users explore movies in real time.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Features.
+[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
+ 
++ Now Playing Movies: Display movies currently playing in theaters using TMDB's /movie/now_playing endpoint.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
++ Top Rated Movies: Show movies with the highest ratings using TMDB's /movie/top_rated endpoint.
 
-### `npm test`
++ Feature 3
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
++ etc
 
-### `npm run build`
++ etc
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Setup requirements.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To set up and run the app locally, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repository:
+git clone [https://github.com/JacobDicksonOfficial/react-tmdb-assignment]
 
-### `npm run eject`
+Navigate to the project directory:
+cd [react-tmdb-assignment]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies:
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a .env file in the root directory with your TMDB API key:
+REACT_APP_TMDB_KEY= [your_tmdb_api_key]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Start the development server:
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Open the app in your browser at:
+http://localhost:3000
 
-## Learn More
+## API endpoints.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This lists the __additional__ TMDB endpoints used, giving the description and pathname for each endpoint
 
-To learn React, check out the [React documentation](https://reactjs.org/).
++ Now Playing Movies: /movie/now_playing - Fetches movies currently playing in theaters.
++ Top Rated Movies: /movie/top_rated - Fetches movies with the highest user ratings.
++ Movie details - movie/:id
++ Movie genres = /genre/movie/list
 
-### Code Splitting
+## Routing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[ List the __new routes__ supported by your app and state the associated page.]
 
-### Analyzing the Bundle Size
++ /blogs - displays all published blogs.
++ /blogs/:id - displays a particular blog.
++ /blogs/:id/comments - detail view of a particular blog and its comments.
++ etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
-### Making a Progressive Web App
+## Independent learning (If relevant).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The following techniques were researched and implemented independently:
 
-### Advanced Configuration
+React Query:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Used for managing server state and API caching.
+Key files: tmdb-api.js, nowPlayingPage.js, topRatedPage.js.
 
-### Deployment
+Resources:
+React Query Documentation: [https://tutors.dev/topic/webappdev2/topic-01-setup]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Material UI:
+Used for designing UI components.
+Key files: siteHeader.js, movieCard.js.
 
-### `npm run build` fails to minify
+Resources:
+Material UI Documentation: https://mui.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pagination Implementation:
+
+Added pagination for lists of movies (e.g., Now Playing, Top Rated).
+Key files: nowPlayingPage.js, topRatedPage.js.
