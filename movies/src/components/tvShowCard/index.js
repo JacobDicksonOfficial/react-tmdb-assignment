@@ -53,7 +53,8 @@ export default function TVShowCard({ show, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {action(show)}
+        {/* Check if action is provided and is a function */}
+        {action && typeof action === "function" && action(show)}
         <Link to={`/tv/${show.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
