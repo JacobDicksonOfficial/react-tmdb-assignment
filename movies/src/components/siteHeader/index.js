@@ -30,6 +30,7 @@ const SiteHeader = ({ history }) => {
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "Now Playing", path: "/movies/nowplaying" }, // Assignmemt 1 - Navigation menu for now playing movies
     { label: "Top Rated", path: "/movies/top_rated" }, // Assignment 1 - Navigation menu for top rated movies
+    { label: "Popular TV Shows", path: "/tv/popular" }, // Assignment 1 - Navigation menu for popular tv shows
   ];
   
   const handleMenuSelect = (pageURL) => {

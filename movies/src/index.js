@@ -14,6 +14,9 @@ import UpcomingMoviesPage from './pages/upcomingMoviesPage';
 import MustWatchPage from "./pages/mustWatchPage";
 import NowPlayingPage from "./pages/nowPlayingPage"; // Assignment 1 (Importing now playing movies in cinema)
 import TopRatedPage from "./pages/topRatedPage";     // Assignment 1 (Importing top rated movies in cinema )
+import PopularTVShowsPage from "./pages/popularTVShowsPage";   // Assignment 1 (Importing popular tv shows )
+import TVShowDetailsPage from "./pages/tvShowDetailsPage";     // Assignment 1 (Importing parametrised tv showdetails page )
+
 
 // Declare the query client to manage the cache
 const queryClient = new QueryClient({
@@ -42,8 +45,10 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema page */}
-            <Route path="/movies/top_rated" element={<TopRatedPage />} /> {/* Assignment 1 - Routing top rated movies in cinema page */}
+            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema page (Static)*/}
+            <Route path="/movies/top_rated" element={<TopRatedPage />} /> {/* Assignment 1 - Routing top rated movies in cinema page (Static)*/}
+            <Route path="/tv/popular" element={<PopularTVShowsPage />} /> {/* Assignment 1 - Routing popular tv show page (Static)*/}
+            <Route path="/tv/:id" element={<TVShowDetailsPage />} /> {/* Assignment 1 - Routing popular tv show details page (Parameterised)*/}
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>

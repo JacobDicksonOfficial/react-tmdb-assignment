@@ -11,7 +11,7 @@ It supports several endpoints and lets users explore movies in real time.
 
 
 ### Features.
-[ A bullet-point list of the __new features__ you added to the Movies Fan app (and any modifications to existing features) .]
+Bullet-pointed list of the new features you added to the Movies Fan app (and any modifications to existing features)
  
 + Now Playing Movies: Display movies currently playing in theaters using TMDB's /movie/now_playing endpoint.
 

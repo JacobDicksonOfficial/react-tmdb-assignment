@@ -144,3 +144,42 @@ export const getTopRatedMovies = () => {
       throw error;
     });
 };
+
+
+// Popular TV Showslist which is fetched from the tmdb api.
+
+export const getPopularTVShows = () => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
+// The parameterised details for each popular TV show selected 
+
+export const getTVShowDetails = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
