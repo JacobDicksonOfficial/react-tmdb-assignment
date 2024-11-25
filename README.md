@@ -1,5 +1,7 @@
 ## 📽️ Assignment 1 - ReactJS App
-Name: Jabez Dickson
+### By: Jabez Dickson
+
+<img src="src/images/tmdb1" alt="My Image" width="500" height="300">
 
 ### Overview
 This repository contains the Movies Fan App, a modern ReactJS application integrated with the TMDB API. The app allows users to explore movies and TV shows, filter and sort content, view detailed information, and manage their favorite lists. It also includes features like third-party authentication (Google), dark mode, and a responsive UI.
