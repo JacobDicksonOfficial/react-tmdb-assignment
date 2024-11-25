@@ -1,90 +1,121 @@
-# react-tmdb-assignment
-
-# Assignment 1 - ReactJS app.
-
+### 📽️ Assignment 1 - ReactJS App
 Name: Jabez Dickson
 
-## Overview.
+## Overview
+This repository contains the Movies Fan App, a modern ReactJS application integrated with the TMDB API. The app allows users to explore movies and TV shows, filter and sort content, view detailed information, and manage their favorite lists. It also includes features like third-party authentication (Google), dark mode, and a responsive UI.
 
-To provide movie details, currently playing movies, top-rated movies, and more, the app communicates with The Movie Database (TMDB) API.
-It supports several endpoints and lets users explore movies in real time.
+## Features
+✨ Core Features
 
+🔑 Third-Party Authentication: Secure Google login via Firebase.
 
-### Features.
-Bullet-pointed list of the new features you added to the Movies Fan app (and any modifications to existing features)
- 
-+ Now Playing Movies: Display movies currently playing in theaters using TMDB's /movie/now_playing endpoint.
+🌙 Dark Mode Toggle: User-friendly dark mode integrated into the UI.
 
-+ Top Rated Movies: Show movies with the highest ratings using TMDB's /movie/top_rated endpoint.
+🔍 Filtering Options: Filter movies and TV shows by name and genre across all pages.
 
-+ Feature 3
+📱 Responsive UI: Built with Material-UI for a seamless experience across devices.
 
-+ etc
+❤️ Favorite Movies: Add and manage favorite movies easily.
 
-+ etc
+📜 Pagination: Infinite scrolling for large datasets.
 
-## Setup requirements.
+📊 Parameterized Endpoints: Detailed views for movies and TV shows.
 
-To set up and run the app locally, follow these steps:
+## Setup Requirements
+1. Clone the Repository
 
-Clone the repository:
-git clone [https://github.com/JacobDicksonOfficial/react-tmdb-assignment]
+git clone [repository URL]
+cd [repository folder]
 
-Navigate to the project directory:
-cd [react-tmdb-assignment]
+2. Install Dependencies
 
-Install dependencies:
 npm install
 
-Create a .env file in the root directory with your TMDB API key:
-REACT_APP_TMDB_KEY= [your_tmdb_api_key]
+3. Set up Firebase
 
-Start the development server:
+npm install firebase
+
+Create a Firebase project at Firebase Console.
+Configure Google Authentication in the Firebase project.
+Replace placeholders in firebase.js with your Firebase credentials.
+
+4. Install Material-UI and Icons
+
+Install Material-UI:
+
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+
+5. Start the Development Server
+
 npm start
+## API Endpoints
 
-Open the app in your browser at:
-http://localhost:3000
+Static Endpoints
 
-## API endpoints.
+🎥 Discover Movies: /discover/movie
+📺 Popular TV Shows: /tv/popular
+⭐ Top-Rated Movies: /movie/top_rated
+🕒 Now Playing Movies: /movie/now_playing
+🎭 Movie Genres: /genre/movie/list
+📂 TV Show Genres: /genre/tv/list
 
-This lists the __additional__ TMDB endpoints used, giving the description and pathname for each endpoint
+Parameterized Endpoints
 
-+ Now Playing Movies: /movie/now_playing - Fetches movies currently playing in theaters.
-+ Top Rated Movies: /movie/top_rated - Fetches movies with the highest user ratings.
-+ Movie details - movie/:id
-+ Movie genres = /genre/movie/list
+🎬 Movie Details: /movie/:id
+Example: /movie/550 - Retrieves details for "Fight Club".
+📺 TV Show Details: /tv/:id
+Example: /tv/1399 - Retrieves details for "Game of Thrones".
+📡 Recommendations for Movies: /movie/:id/recommendations
+Example: /movie/550/recommendations - Recommendations for "Fight Club".
+📡 Recommendations for TV Shows: /tv/:id/recommendations
+Example: /tv/1399/recommendations - Recommendations for "Game of Thrones".
 
-## Routing.
 
-[ List the __new routes__ supported by your app and state the associated page.]
+## Routing
+Public Routes
+/login - Login page for users.
+/signup - Signup page for new users.
+Protected Routes
 
-+ /blogs - displays all published blogs.
-+ /blogs/:id - displays a particular blog.
-+ /blogs/:id/comments - detail view of a particular blog and its comments.
-+ etc.
+/ - Home page showcasing movie lists.
+/movies/favorites - Displays the user's favorite movies.
+/movies/:id - Shows detailed information about a specific movie.
+/movies/top_rated - Explore top-rated movies.
+/movies/now_playing - View movies currently playing in theaters.
+/tv/popular - Explore popular TV shows.
+/tv/:id - View detailed information about a specific TV show.
 
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
-## Independent learning (If relevant).
+## Independent Learning
+This project involved the independent research and implementation of:
 
-The following techniques were researched and implemented independently:
+🔑 Third-Party Authentication (Google):
 
-React Query:
+Integrated using Firebase Authentication.
+Source Code: firebase.js, AuthContext.js, loginPage.js.
+Reference: Firebase Authentication Docs.
 
-Used for managing server state and API caching.
-Key files: tmdb-api.js, nowPlayingPage.js, topRatedPage.js.
+🌙 Dark Mode Toggle:
 
-Resources:
-React Query Documentation: [https://tutors.dev/topic/webappdev2/topic-01-setup]
+Developed using Material-UI themes and React Context API.
+Source Code: ThemeContext.js, SiteHeader/index.js.
+Reference: Material-UI Theme Customization.
 
-Material UI:
-Used for designing UI components.
-Key files: siteHeader.js, movieCard.js.
+⚡ React-Query Caching:
 
-Resources:
-Material UI Documentation: https://mui.com
+Enhanced performance with API request caching and state management.
+Source Code: topRatedPage.js, popularTVShowsPage.js.
+Reference: React Query Docs.
 
-Pagination Implementation:
+🎛️ FilterCard Component:
 
-Added pagination for lists of movies (e.g., Now Playing, Top Rated).
-Key files: nowPlayingPage.js, topRatedPage.js.
+Added filtering options for movies and TV shows.
+Source Code: FilterCard.js, TVShowListPageTemplate.js.
+Reference: React Filtering Tutorial.
+
+📱 Responsive UI:
+
+Ensured mobile-friendly design using Material-UI Grid.
+Source Code: SiteHeader/index.js, TVShowListPageTemplate.js.
+Reference: Material-UI Responsive Grid.
