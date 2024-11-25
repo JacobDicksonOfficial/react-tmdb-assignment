@@ -69,6 +69,7 @@ Parameterized Endpoints
 Example: /movie/550 - Retrieves details for "Fight Club".<br>
 📺 TV Show Details: /tv/:id<br>
 Example: /tv/1399 - Retrieves details for "Game of Thrones".<br>
+<br>
 📡 Recommendations for Movies: /movie/:id/recommendations<br>
 Example: /movie/550/recommendations - Recommendations for "Fight Club".<br>
 📡 Recommendations for TV Shows: /tv/:id/recommendations<br>
@@ -79,6 +80,8 @@ Example: /tv/1399/recommendations - Recommendations for "Game of Thrones".<br>
 Public Routes<br>
 /login - Login page for users.<br>
 /signup - Signup page for new users.<br>
+
+<img src="movies/src/images/tmdb4.png" alt="My Image" width="800" height="400">
 
 Protected Routes
 

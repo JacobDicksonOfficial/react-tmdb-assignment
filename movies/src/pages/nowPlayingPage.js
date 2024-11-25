@@ -6,8 +6,8 @@ import PageTemplate from "../components/templateMovieListPage";
 
 const NowPlayingPage = () => {
   const { data, error, isLoading, isError } = useQuery(
-    "nowPlayingMovies", // Unique query key
-    getNowPlayingMovies // API fetch function
+    "nowPlayingMovies", 
+    getNowPlayingMovies 
   );
 
   if (isLoading) return <Spinner />;
@@ -22,7 +22,7 @@ const NowPlayingPage = () => {
     <PageTemplate
       title="Now Playing Movies"
       movies={movies}
-      action={(movie) => null} // No action needed for now
+      action={(movie) => null} 
     />
   );
 };
