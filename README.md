@@ -1,10 +1,10 @@
-### 📽️ Assignment 1 - ReactJS App
+## 📽️ Assignment 1 - ReactJS App
 Name: Jabez Dickson
 
-## Overview
+### Overview
 This repository contains the Movies Fan App, a modern ReactJS application integrated with the TMDB API. The app allows users to explore movies and TV shows, filter and sort content, view detailed information, and manage their favorite lists. It also includes features like third-party authentication (Google), dark mode, and a responsive UI.
 
-## Features
+### Features
 ✨ Core Features
 
 🔑 Third-Party Authentication: Secure Google login via Firebase.
@@ -21,10 +21,10 @@ This repository contains the Movies Fan App, a modern ReactJS application integr
 
 📊 Parameterized Endpoints: Detailed views for movies and TV shows.
 
-## Setup Requirements
+### Setup Requirements
 1. Clone the Repository
 
-git clone [repository URL]
+git clone [repository URL]<br>
 cd [repository folder]
 
 2. Install Dependencies
@@ -35,60 +35,61 @@ npm install
 
 npm install firebase
 
-Create a Firebase project at Firebase Console.
-Configure Google Authentication in the Firebase project.
-Replace placeholders in firebase.js with your Firebase credentials.
+Create a Firebase project at Firebase Console.<br>
+Configure Google Authentication in the Firebase project.<br>
+Replace placeholders in firebase.js with your Firebase credentials.<br>
 
 4. Install Material-UI and Icons
 
 Install Material-UI:
 
-npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/material @emotion/react @emotion/styled<br>
 npm install @mui/icons-material
 
 5. Start the Development Server
 
 npm start
-## API Endpoints
+
+### API Endpoints
 
 Static Endpoints
 
-🎥 Discover Movies: /discover/movie
-📺 Popular TV Shows: /tv/popular
-⭐ Top-Rated Movies: /movie/top_rated
-🕒 Now Playing Movies: /movie/now_playing
-🎭 Movie Genres: /genre/movie/list
-📂 TV Show Genres: /genre/tv/list
+🎥 Discover Movies: /discover/movie<br>
+📺 Popular TV Shows: /tv/popular<br>
+⭐ Top-Rated Movies: /movie/top_rated<br>
+🕒 Now Playing Movies: /movie/now_playing<br>
+🎭 Movie Genres: /genre/movie/list<br>
+📂 TV Show Genres: /genre/tv/list<br>
 
 Parameterized Endpoints
 
-🎬 Movie Details: /movie/:id
-Example: /movie/550 - Retrieves details for "Fight Club".
-📺 TV Show Details: /tv/:id
-Example: /tv/1399 - Retrieves details for "Game of Thrones".
-📡 Recommendations for Movies: /movie/:id/recommendations
-Example: /movie/550/recommendations - Recommendations for "Fight Club".
-📡 Recommendations for TV Shows: /tv/:id/recommendations
-Example: /tv/1399/recommendations - Recommendations for "Game of Thrones".
+🎬 Movie Details: /movie/:id<br>
+Example: /movie/550 - Retrieves details for "Fight Club".<br>
+📺 TV Show Details: /tv/:id<br>
+Example: /tv/1399 - Retrieves details for "Game of Thrones".<br>
+📡 Recommendations for Movies: /movie/:id/recommendations<br>
+Example: /movie/550/recommendations - Recommendations for "Fight Club".<br>
+📡 Recommendations for TV Shows: /tv/:id/recommendations<br>
+Example: /tv/1399/recommendations - Recommendations for "Game of Thrones".<br>
 
 
 ## Routing
-Public Routes
-/login - Login page for users.
-/signup - Signup page for new users.
+Public Routes<br>
+/login - Login page for users.<br>
+/signup - Signup page for new users.<br>
+
 Protected Routes
 
-/ - Home page showcasing movie lists.
-/movies/favorites - Displays the user's favorite movies.
-/movies/:id - Shows detailed information about a specific movie.
-/movies/top_rated - Explore top-rated movies.
-/movies/now_playing - View movies currently playing in theaters.
-/tv/popular - Explore popular TV shows.
-/tv/:id - View detailed information about a specific TV show.
+/ - Home page showcasing movie lists.<br>
+/movies/favorites - Displays the user's favorite movies.<br>
+/movies/:id - Shows detailed information about a specific movie.<br>
+/movies/top_rated - Explore top-rated movies.<br>
+/movies/now_playing - View movies currently playing in theaters.<br>
+/tv/popular - Explore popular TV shows.<br>
+/tv/:id - View detailed information about a specific TV show.<br>
 
 
 ## Independent Learning
-This project involved the independent research and implementation of:
 
 🔑 Third-Party Authentication (Google):
 
