@@ -16,24 +16,16 @@ import Avatar from "@mui/material/Avatar";
 import img from "../../images/film-poster-placeholder.png";
 
 export default function MovieCard({ movie, action }) {
-  const { favorites, addToFavorites } = useContext(MoviesContext);
+  const { favorites } = useContext(MoviesContext);
 
-  if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
-  } else {
-    movie.favorite = false;
-  }
-
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(movie);
-  };
+  // Determine if the movie is a favorite
+  const isFavorite = favorites.some((id) => id === movie.id);
 
   return (
     <Card>
       <CardHeader
         avatar={
-          movie.favorite ? (
+          isFavorite ? (
             <Avatar sx={{ backgroundColor: "red" }}>
               <FavoriteIcon />
             </Avatar>
@@ -70,15 +62,12 @@ export default function MovieCard({ movie, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      
         {action(movie)}
-      
         <Link to={`/movies/${movie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-        
       </CardActions>
     </Card>
   );

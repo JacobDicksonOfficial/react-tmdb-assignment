@@ -1,5 +1,3 @@
-// src/index.js
-
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
@@ -19,14 +17,13 @@ import TopRatedPage from './pages/topRatedPage';
 import PopularTVShowsPage from './pages/popularTVShowsPage';
 import TVShowDetailsPage from './pages/tvShowDetailsPage';
 import Spinner from './components/spinner';
+import { ThemeContextProvider } from "./contexts/ThemeContext"; // Import ThemeContext
 
-// Import Firebase initialization
-import { auth } from './firebase'; // Import from firebase.js
-import { onAuthStateChanged } from "firebase/auth"; // Import only necessary Firebase functions
+import { auth } from './firebase';
+import { onAuthStateChanged } from "firebase/auth";
 
-// Import Pages for routing
-import LoginPage from './pages/loginPage'; // Login page component
-import SignupPage from './pages/signupPage'; // Signup page component
+import LoginPage from './pages/loginPage';
+import SignupPage from './pages/signupPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,15 +41,14 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // Set user after authentication
-      setLoading(false); // Set loading to false after auth check
+      setUser(currentUser);
+      setLoading(false);
     });
-    
-    return () => unsubscribe(); // Cleanup listener on unmount
+    return () => unsubscribe();
   }, []);
 
   if (loading) {
-    return <Spinner />; // Show spinner while loading
+    return <Spinner />;
   }
 
   return (
@@ -89,6 +85,9 @@ const App = () => {
   );
 };
 
-
 const rootElement = createRoot(document.getElementById("root"));
-rootElement.render(<App />);
+rootElement.render(
+  <ThemeContextProvider>
+    <App />
+  </ThemeContextProvider>
+);

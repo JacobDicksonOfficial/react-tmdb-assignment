@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth'; // Only import what you use
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
-import { auth } from '../firebase'; // Make sure this is your Firebase setup
+import { auth } from '../firebase'; // Use the already initialized auth instance
 import './Auth.css'; // Import the CSS file
 
 const LoginPage = () => {
