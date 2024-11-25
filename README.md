@@ -1,5 +1,5 @@
 ## 📽️ Assignment 1 - ReactJS App
-### By: Jabez Dickson
+### By: Jabez Dickson [![View PDF](https://img.shields.io/badge/View-Web_App_Development_TMDB-red)](./README.md)
 
 <img src="movies/src/images/tmdb1.png" alt="My Image" width="800" height="400">
 
