@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth'; // Only import what you use
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Import Google provider methods
 import { Link, useNavigate } from 'react-router-dom'; // Import Link for navigation
 import { auth } from '../firebase'; // Use the already initialized auth instance
+import { Button } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google'; // Material-UI icon for Google
 import './Auth.css'; // Import the CSS file
 
 const LoginPage = () => {
@@ -14,6 +16,16 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate('/'); // Redirect to the home page after successful login
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
       navigate('/'); // Redirect to the home page after successful login
     } catch (error) {
       setError(error.message);
@@ -47,7 +59,18 @@ const LoginPage = () => {
         <button type="submit" className="submit-button">Log In</button>
       </form>
 
-      {/* Display error if any */}
+      <div className="third-party-auth">
+        <p>_________________________________________________</p>
+        <Button
+          variant="outlined"
+          startIcon={<GoogleIcon />}
+          onClick={handleGoogleLogin}
+          className="google-button"
+        >
+          Log In with Google
+        </Button>
+      </div>
+
       {error && <p className="error-message">{error}</p>}
 
       <p className="auth-link">

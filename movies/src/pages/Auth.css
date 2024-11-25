@@ -106,4 +106,30 @@
   .link:hover {
     text-decoration: underline;
   }
+
+  /* Google Button */
+.google-button {
+  width: 100%; /* Full-width button */
+  margin-top: 20px;
+  padding: 12px 10px;
+  border: 1px solid #4285F4; /* Google's primary color */
+  color: #4285F4; /* Google's primary color */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: none; /* Keep the button text normal case */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.google-button:hover {
+  background-color: #4285F4;
+  color: white;
+}
+
+.google-button .MuiButton-startIcon {
+  margin-right: 8px;
+}
   

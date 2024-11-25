@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom'; // Import navigate for redirecting
-import './Auth.css'; // Import the CSS file
+import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
+import GoogleIcon from '@mui/icons-material/Google'; // Material-UI icon for Google
+import './Auth.css';
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Use navigate function for redirection
+  const navigate = useNavigate();
+  const auth = getAuth();
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const auth = getAuth();
-
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/login'); // After successful signup, redirect to login page
+      navigate('/login'); // Redirect to login page after successful signup
     } catch (error) {
-      setError(error.message); // Handle any error
+      setError(error.message);
+    }
+  };
+
+  const handleGoogleSignup = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      navigate('/'); // Redirect to homepage or dashboard after successful login
+    } catch (error) {
+      setError(error.message);
     }
   };
 
@@ -27,28 +38,39 @@ const SignupPage = () => {
       <form onSubmit={handleSignup} className="auth-form">
         <div className="input-group">
           <label className="input-label">Email</label>
-          <input 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
             className="input-field"
           />
         </div>
         <div className="input-group">
           <label className="input-label">Password</label>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
             className="input-field"
           />
         </div>
         <button type="submit" className="submit-button">Sign Up</button>
       </form>
 
-      {/* Display error if there's one */}
+      <div className="third-party-auth">
+      <p>_________________________________________________</p>
+        <Button
+          variant="outlined"
+          startIcon={<GoogleIcon />}
+          onClick={handleGoogleSignup}
+          className="google-button"
+        >
+          Sign Up with Google
+        </Button>
+      </div>
+
       {error && <p className="error-message">{error}</p>}
 
       <p className="auth-link">
