@@ -1,6 +1,8 @@
 # Assignment 1 - ReactJS app.
 
-Name: Jabez Dickson
+# Name: Jabez Dickson 
+
+<img src="src/images/tmdb1" alt="My Image" width="500" height="300">
 
 ## Overview.
 
