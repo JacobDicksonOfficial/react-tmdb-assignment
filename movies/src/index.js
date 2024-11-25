@@ -1,4 +1,6 @@
-import React from "react";
+// src/index.js
+
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
@@ -10,52 +12,83 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
-import UpcomingMoviesPage from './pages/upcomingMoviesPage'; 
-import MustWatchPage from "./pages/mustWatchPage";
-import NowPlayingPage from "./pages/nowPlayingPage"; // Assignment 1 (Importing now playing movies in cinema)
-import TopRatedPage from "./pages/topRatedPage";     // Assignment 1 (Importing top rated movies in cinema )
-import PopularTVShowsPage from "./pages/popularTVShowsPage";   // Assignment 1 (Importing popular tv shows )
-import TVShowDetailsPage from "./pages/tvShowDetailsPage";     // Assignment 1 (Importing parametrised tv showdetails page )
+import UpcomingMoviesPage from './pages/upcomingMoviesPage';
+import MustWatchPage from './pages/mustWatchPage';
+import NowPlayingPage from './pages/nowPlayingPage';
+import TopRatedPage from './pages/topRatedPage';
+import PopularTVShowsPage from './pages/popularTVShowsPage';
+import TVShowDetailsPage from './pages/tvShowDetailsPage';
+import Spinner from './components/spinner';
 
+// Import Firebase initialization
+import { auth } from './firebase'; // Import from firebase.js
+import { onAuthStateChanged } from "firebase/auth"; // Import only necessary Firebase functions
 
-// Declare the query client to manage the cache
+// Import Pages for routing
+import LoginPage from './pages/loginPage'; // Login page component
+import SignupPage from './pages/signupPage'; // Signup page component
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 360000, // Data remains fresh for 1 hour
-      refetchInterval: 360000, // Refetch every 1 hour
-      refetchOnWindowFocus: false // Disable refetch on window focus
+      staleTime: 360000,
+      refetchInterval: 360000,
+      refetchOnWindowFocus: false,
     },
   },
 });
 
-// App component updated with QueryClientProvider, MoviesContextProvider, and routes
 const App = () => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // Set user after authentication
+      setLoading(false); // Set loading to false after auth check
+    });
+    
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, []);
+
+  if (loading) {
+    return <Spinner />; // Show spinner while loading
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <SiteHeader />
-        <MoviesContextProvider>
+        {user ? (
+          <MoviesContextProvider>
+            <SiteHeader />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+              <Route path="/reviews/:id" element={<MovieReviewPage />} />
+              <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+              <Route path="/movies/mustwatch" element={<MustWatchPage />} />
+              <Route path="/movies/now_playing" element={<NowPlayingPage />} />
+              <Route path="/movies/top_rated" element={<TopRatedPage />} />
+              <Route path="/tv/popular" element={<PopularTVShowsPage />} />
+              <Route path="/tv/:id" element={<TVShowDetailsPage />} />
+              <Route path="/reviews/form" element={<AddMovieReviewPage />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </MoviesContextProvider>
+        ) : (
           <Routes>
-            <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
-            <Route path="/reviews/:id" element={<MovieReviewPage />} />
-            <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-            <Route path="/movies/mustwatch" element={<MustWatchPage />} /> {/* Must Watch Page */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-            <Route path="/movies/now_playing" element={<NowPlayingPage />} /> {/* Assignment 1 - Routing now playing movies in cinema page (Static)*/}
-            <Route path="/movies/top_rated" element={<TopRatedPage />} /> {/* Assignment 1 - Routing top rated movies in cinema page (Static)*/}
-            <Route path="/tv/popular" element={<PopularTVShowsPage />} /> {/* Assignment 1 - Routing popular tv show page (Static)*/}
-            <Route path="/tv/:id" element={<TVShowDetailsPage />} /> {/* Assignment 1 - Routing popular tv show details page (Parameterised)*/}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
           </Routes>
-        </MoviesContextProvider>
+        )}
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
-// Render the App component
+
+
 const rootElement = createRoot(document.getElementById("root"));
 rootElement.render(<App />);

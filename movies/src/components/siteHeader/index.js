@@ -1,3 +1,5 @@
+// src/components/siteHeader/index.js
+
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,10 +13,12 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { signOut } from "firebase/auth"; // Import Firebase signOut
+import { auth } from '../../firebase'; // Import auth from firebase.js
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
-const SiteHeader = ({ history }) => {
+const SiteHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -28,9 +32,9 @@ const SiteHeader = ({ history }) => {
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" }, 
     { label: "Must Watch", path: "/movies/mustwatch" },
-    { label: "Now Playing", path: "/movies/nowplaying" }, // Assignmemt 1 - Navigation menu for now playing movies
-    { label: "Top Rated", path: "/movies/top_rated" }, // Assignment 1 - Navigation menu for top rated movies
-    { label: "Popular TV Shows", path: "/tv/popular" }, // Assignment 1 - Navigation menu for popular tv shows
+    { label: "Now Playing", path: "/movies/nowplaying" }, // Navigation for now playing movies
+    { label: "Top Rated", path: "/movies/top_rated" }, // Navigation for top rated movies
+    { label: "Popular TV Shows", path: "/tv/popular" }, // Navigation for popular TV shows
   ];
   
   const handleMenuSelect = (pageURL) => {
@@ -39,6 +43,16 @@ const SiteHeader = ({ history }) => {
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // Sign out from Firebase
+      navigate('/login'); // Redirect to login page after sign out
+    } catch (error) {
+      console.error("Error logging out: ", error);
+    }
   };
 
   return (
@@ -85,6 +99,8 @@ const SiteHeader = ({ history }) => {
                       {opt.label}
                     </MenuItem>
                   ))}
+                  {/* Add Log Out button in menu */}
+                  <MenuItem onClick={handleLogout}>Log Out</MenuItem>
                 </Menu>
               </>
             ) : (
@@ -98,6 +114,10 @@ const SiteHeader = ({ history }) => {
                     {opt.label}
                   </Button>
                 ))}
+                {/* Add Log Out button in header */}
+                <Button color="inherit" onClick={handleLogout}>
+                  Log Out
+                </Button>
               </>
             )}
         </Toolbar>
