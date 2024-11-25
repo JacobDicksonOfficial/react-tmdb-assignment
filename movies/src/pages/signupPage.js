@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'; // Import navigate for redirecting
+import './Auth.css'; // Import the CSS file
 
 const SignupPage = () => {
   const [email, setEmail] = useState('');
@@ -21,36 +22,38 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label>Email</label>
+    <div className="auth-container">
+      <h1 className="auth-title">Have you Signed Up?</h1>
+      <form onSubmit={handleSignup} className="auth-form">
+        <div className="input-group">
+          <label className="input-label">Email</label>
           <input 
             type="email" 
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             required 
+            className="input-field"
           />
         </div>
-        <div>
-          <label>Password</label>
+        <div className="input-group">
+          <label className="input-label">Password</label>
           <input 
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
             required 
+            className="input-field"
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="submit-button">Sign Up</button>
       </form>
 
       {/* Display error if there's one */}
-      {error && <p>{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
-      <p>
+      <p className="auth-link">
         Already have an account? 
-        <a href="/login">Login here</a>
+        <a href="/login" className="link">Login here</a>
       </p>
     </div>
   );
