@@ -60,7 +60,7 @@ const SignupPage = () => {
       </form>
 
       <div className="third-party-auth">
-      <p>_________________________________________________</p>
+      <p>.</p>
         <Button
           variant="outlined"
           startIcon={<GoogleIcon />}
